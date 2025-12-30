@@ -25,3 +25,7 @@ spring:
           uri: lb://tool-group-service
           predicates:
             - Path=/api/tool-group/**, /api/category/**
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
