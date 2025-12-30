@@ -7,4 +7,21 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
   instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    instance-id: ${spring.application.name}:${random.value}
+    prefer-ip-address: true
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/tool-rent-db
+    username: root
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9090/realms/ToolRent
+          jwk-set-uri: http://localhost:9090/realms/ToolRent/protocol/openid-connect/certs
