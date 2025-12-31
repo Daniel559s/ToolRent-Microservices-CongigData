@@ -24,10 +24,16 @@ spring:
           uri: lb://tool-unique-service
           predicates:
             - Path=/api/tool-unique/**
+          filters:
+            - RemoveRequestHeader=Cookie
         - id: tool-group-service
           uri: lb://tool-group-service
           predicates:
-            - Path=/api/tool-group/**, /api/category/**
+            - Path=/api/tool-group/**,/api/category/**
+          filters:
+            - RemoveRequestHeader=Cookie
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
 
 management:
   endpoints:
