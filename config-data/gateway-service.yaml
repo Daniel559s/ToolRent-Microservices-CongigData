@@ -32,6 +32,12 @@ spring:
             - Path=/api/tool-group/**,/api/category/**
           filters:
             - RemoveRequestHeader=Cookie
+        - id: loan-service
+          uri: lb://loan-service
+          predicates:
+            - Path=/api/loan/**,/api/payment/**
+          filters:
+            - RemoveRequestHeader=Cookie
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
     discovery:
